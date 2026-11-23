@@ -60,6 +60,20 @@ To check unit splitting without an API key, run this in the project folder:
 python -c "from app import split_syllabus_by_unit; text = open('sample_syllabus.txt', encoding='utf-8').read(); units = split_syllabus_by_unit(text); print([title for title, _ in units]); assert len(units) == 3"
 ```
 
+## Deploy to Streamlit Community Cloud
+
+1. Create a new app at [share.streamlit.io](https://share.streamlit.io/).
+2. Select this GitHub repository, the `main` branch, and `app.py` as the main file.
+3. In the app settings, add this under **Secrets**, replacing the example with your own key:
+
+   ```toml
+   GEMINI_API_KEY = "paste-your-key-here"
+   ```
+
+4. Save the secret and reboot the app if it is already running.
+
+The app reads the key from Streamlit Secrets when deployed, and from the `GEMINI_API_KEY` environment variable when run locally.
+
 ## API key safety
 
 `.gitignore` excludes local environment files, Streamlit secrets, and virtual environments. Keep your actual key in the `GEMINI_API_KEY` environment variable and never add it to the project files or GitHub.
