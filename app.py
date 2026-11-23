@@ -7,6 +7,7 @@ from io import BytesIO
 import streamlit as st
 from docx import Document
 from google import genai
+from streamlit.errors import StreamlitSecretNotFoundError
 
 
 MODEL_NAME = "gemini-3.5-flash-lite"
@@ -86,7 +87,11 @@ syllabus_text = st.text_area(
     placeholder="Example: UNIT I\nIntroduction to the subject...\n\nUNIT II\nNext topics...",
 )
 
-api_key = os.getenv("GEMINI_API_KEY", "").strip()
+try:
+    api_key = st.secrets.get("GEMINI_API_KEY", "").strip()
+except (KeyError, StreamlitSecretNotFoundError):
+    api_key = ""
+api_key = api_key or os.getenv("GEMINI_API_KEY", "").strip()
 if not api_key:
     st.info("Set the GEMINI_API_KEY environment variable before generating notes.")
 
