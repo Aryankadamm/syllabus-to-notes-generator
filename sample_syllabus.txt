@@ -1,0 +1,14 @@
+Course: Introduction to Computer Science
+
+UNIT I: Computer Fundamentals
+Characteristics and applications of computers; generations of computers;
+basic computer organization; input, output, and storage devices.
+
+UNIT II: Number Systems and Data Representation
+Binary, decimal, octal, and hexadecimal number systems; conversions between
+number systems; binary arithmetic; character representation.
+
+UNIT III: Introduction to Programming
+Algorithms and flowcharts; variables and data types; operators; conditional
+statements; loops; functions; basic debugging.
+
